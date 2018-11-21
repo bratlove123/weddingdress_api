@@ -15,6 +15,6 @@ namespace WeddingDress.ASPCore.WebAPI.Insfrastructure.Ef
         public DbSet<Project> Projects { get; set; }
         public DbSet<LeftNav> LeftNavs { get; set; }
         public DbSet<LeftNavItem> LeftNavItems { get; set; }
-        public DbSet<Test> Tests { get; set; }
+        public DbSet<FileUpload> FileUploads { get; set; }
     }
 }

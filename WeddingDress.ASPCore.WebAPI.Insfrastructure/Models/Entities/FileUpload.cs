@@ -5,8 +5,17 @@ using WeddingDress.ASPCore.WebAPI.Insfrastructure.Common;
 
 namespace WeddingDress.ASPCore.WebAPI.Insfrastructure.Models.Entities
 {
-    public class Test:EntityBase
+    public class FileUpload: EntityBase
     {
-        public string Name { get; set; }
+        public string FileName
+        {
+            get;
+            set;
+        }
+        public byte[] FileData
+        {
+            get;
+            set;
+        }
     }
 }

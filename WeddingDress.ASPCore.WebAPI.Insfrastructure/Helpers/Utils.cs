@@ -1,4 +1,6 @@
-﻿using Newtonsoft.Json;
+﻿using Microsoft.AspNetCore.Http;
+using Newtonsoft.Json;
+using System.IO;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Security.Claims;
@@ -38,6 +40,15 @@ namespace WeddingDress.ASPCore.WebAPI.Insfrastructure.Helpers
             var result = orderByGeneric.Invoke(null, new object[] { source, lambda });
 
             return (IOrderedQueryable<TSource>)result;
+        }
+
+        public byte[] GetByteArrayFromFile(IFormFile file)
+        {
+            using (var target = new MemoryStream())
+            {
+                file.CopyTo(target);
+                return target.ToArray();
+            }
         }
     }
 }

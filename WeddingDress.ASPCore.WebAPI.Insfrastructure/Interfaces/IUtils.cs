@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using Microsoft.AspNetCore.Http;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,5 +14,6 @@ namespace WeddingDress.ASPCore.WebAPI.Insfrastructure.Interfaces
     {
         IOrderedQueryable<TSource> OrderBy<TSource>(IQueryable<TSource> source, string propertyName);
         IOrderedQueryable<TSource> OrderByDescending<TSource>(IQueryable<TSource> source, string propertyName);
+        byte[] GetByteArrayFromFile(IFormFile file);
     }
 }

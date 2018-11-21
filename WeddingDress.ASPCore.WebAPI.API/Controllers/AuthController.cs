@@ -129,7 +129,7 @@ namespace WeddingDress.ASPCore.WebAPI.API.Controllers
             jwtObj.UserName = user.UserName;
             jwtObj.FullName = user.FirstName + " " + user.LastName;
             jwtObj.Email = user.Email;
-            jwtObj.Avatar = user.PictureUrl;
+            jwtObj.Avatar = user.Avatar;
             return Ok(jwtObj);
         }
 
@@ -226,7 +226,7 @@ namespace WeddingDress.ASPCore.WebAPI.API.Controllers
                     FacebookId = userInfo.Id,
                     Email = userInfo.Email,
                     UserName = userInfo.Email,
-                    PictureUrl = userInfo.Picture.Data.Url
+                    Avatar = userInfo.Picture.Data.Url
                 };
 
                 var result = await _userManager.CreateAsync(appUser, Convert.ToBase64String(Guid.NewGuid().ToByteArray()).Substring(0, 8));

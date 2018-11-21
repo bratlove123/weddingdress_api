@@ -10,6 +10,7 @@ namespace WeddingDress.ASPCore.WebAPI.Insfrastructure.Models.Entities
         public virtual string FirstName { get; set; }
         public virtual string LastName { get; set; }
         public virtual long? FacebookId { get; set; }
-        public virtual string PictureUrl { get; set; }
+        public virtual string Avatar { get; set; }
+        public virtual string Address { get; set; }
     }
 }
