@@ -9,5 +9,6 @@ namespace WeddingDress.ASPCore.WebAPI.Insfrastructure.Interfaces
     public interface IUserRepository
     {
         Task<bool> AddUser(ApplicationUser user, string password);
+        Task<List<ApplicationUser>> GetUsers();
     }
 }

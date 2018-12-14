@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -26,6 +27,11 @@ namespace WeddingDress.ASPCore.WebAPI.Insfrastructure.Repositories
                 return false;
             }
             return true;
+        }
+
+        public async Task<List<ApplicationUser>> GetUsers()
+        {
+            return await _userManager.Users.ToListAsync();
         }
     }
 }

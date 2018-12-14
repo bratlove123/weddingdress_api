@@ -24,7 +24,7 @@ namespace WeddingDress.ASPCore.WebAPI.Services.Services
         {
             FileUpload fileUpload = new FileUpload();
             fileUpload.FileData = _utils.GetByteArrayFromFile(file);
-            fileUpload.FileName = file.Name;
+            fileUpload.FileName = file.FileName;
             return _fileUploadRepository.UploadFile(fileUpload);
         }
     }

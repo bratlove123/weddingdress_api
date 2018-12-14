@@ -140,6 +140,8 @@ namespace WeddingDress.ASPCore.WebAPI.API
             services.AddTransient<IProductService, ProductService>();
             services.AddSingleton<IEmailService, EmailService>();
             services.AddTransient<ILeftNavService, LeftNavService>();
+            services.AddTransient<IUserService, UserService>();
+            services.AddTransient<IFileUploadService, FileUploadService>();
         }
 
         private static void AddApplicationRepositories(IServiceCollection services)
@@ -148,11 +150,14 @@ namespace WeddingDress.ASPCore.WebAPI.API
             services.AddTransient<IAuthRepository, AuthRepository>();
             services.AddTransient<IProductRepository, ProductRepository>();
             services.AddTransient<ILeftNavRepository, LeftNavRepository>();
+            services.AddTransient<IUserRepository, UserRepository>();
+            services.AddTransient<IFileUploadRepository, FileUploadRepository>();
         }
 
         private static void AddApplicationModelFactories(IServiceCollection services)
         {
             services.AddTransient<ILeftNavModelFactory, LeftNavModelFactory>();
+            services.AddTransient<IUserModelFactory, UserModelFactory>();
         }
 
         private static void RegisterMapperProfiles()
@@ -161,6 +166,7 @@ namespace WeddingDress.ASPCore.WebAPI.API
             {
                 config.AddProfile<RegistrationAppUserMappingProfile>();
                 config.AddProfile<LeftNavMappingProfile>();
+                config.AddProfile<UserMappingProfile>();
             });
         }
 

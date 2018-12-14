@@ -14,7 +14,6 @@ using System.Net;
 
 namespace WeddingDress.ASPCore.WebAPI.API.Controllers
 {
-    [Authorize(Policy = "ApiUser")]
     [Route("api/file")]
     public class FileUploadController : Controller
     {
@@ -25,30 +24,33 @@ namespace WeddingDress.ASPCore.WebAPI.API.Controllers
             _fileUploadService = fileUploadService;
         }
 
-        [Route("upload")]
+        [Authorize(Policy = "ApiUser")]
         [Authorize(Roles = "Admin")]
-        [HttpPost]
+        [HttpPost("upload")]
         public IActionResult UploadFile(IFormFile file)
         {
             var id = _fileUploadService.UploadFile(file);
             return Ok(id);
         }
 
-        [Route("get")]
-        [Authorize(Roles = "Admin")]
-        [HttpPost]
-        public HttpResponseMessage GetFile(int id)
+        [HttpGet("get/{id}")]
+        public IActionResult GetFile(int id)
         {
             var file = _fileUploadService.GetFile(id);
             if (file == null)
             {
-                return new HttpResponseMessage(HttpStatusCode.NotFound);
+                ModelState.AddModelError("Message", "Cannot find the file");
+                return BadRequest(ModelState);
             }
             MemoryStream ms = new MemoryStream(file.FileData);
-            HttpResponseMessage response = new HttpResponseMessage(HttpStatusCode.OK);
-            response.Content = new StreamContent(ms);
-            response.Content.Headers.ContentType = new System.Net.Http.Headers.MediaTypeHeaderValue("image");
-            return response;
+            //HttpResponseMessage response = new HttpResponseMessage(HttpStatusCode.OK);
+            //response.Content = new StreamContent(ms);
+            //response.Content.Headers.ContentDisposition = new System.Net.Http.Headers.ContentDispositionHeaderValue("attachment")
+            //{
+            //    FileName = file.FileName
+            //};
+            //response.Content.Headers.ContentType = new System.Net.Http.Headers.MediaTypeHeaderValue("application/octet-stream");
+            return File(ms, "application/octet-stream");
         }
     }
 }

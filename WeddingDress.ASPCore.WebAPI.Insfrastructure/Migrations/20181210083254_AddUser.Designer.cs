@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using WeddingDress.ASPCore.WebAPI.Insfrastructure.Ef;
 
 namespace WeddingDress.ASPCore.WebAPI.Insfrastructure.Migrations
 {
     [DbContext(typeof(WeddingDressDataContext))]
-    partial class WeddingDressDataContextModelSnapshot : ModelSnapshot
+    [Migration("20181210083254_AddUser")]
+    partial class AddUser
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
