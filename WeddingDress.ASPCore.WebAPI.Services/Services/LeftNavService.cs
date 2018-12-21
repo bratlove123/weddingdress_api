@@ -43,11 +43,11 @@ namespace WeddingDress.ASPCore.WebAPI.Services.Services
             return _leftNavRepository.GetLeftNavs();
         }
 
-        public LeftNavReturnViewModel GetLeftNavsWithPagingAndSorting(int pageSize, int pageNumber, string orderBy, bool sort, string search)
+        public DataReturnViewModel GetLeftNavsWithPagingAndSorting(int pageSize, int pageNumber, string orderBy, bool sort, string search)
         {
-            LeftNavReturnViewModel returnModel = new LeftNavReturnViewModel()
+            DataReturnViewModel returnModel = new DataReturnViewModel()
             {
-                LeftNavs = _leftNavRepository.GetLeftNavsWithPagingAndSorting(pageSize, pageNumber, orderBy, sort, search),
+                Data = _leftNavRepository.GetLeftNavsWithPagingAndSorting(pageSize, pageNumber, orderBy, sort, search),
                 CountAll = _leftNavRepository.CountWithSearch(search)
             };
             return returnModel;

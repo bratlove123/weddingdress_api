@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -42,6 +43,37 @@ namespace WeddingDress.ASPCore.WebAPI.API.Controllers
         {
             var users = _userService.GetUsers();
             return users;
+        }
+
+        [HttpGet("getsort")]
+        public UserReturnViewModel GetLeftNavsWithPagingAndSorting(int pageSize, int pageNumber, string orderBy, bool sort, string search)
+        {
+            var users = _userService.GetUsersWithPagingAndSorting(pageSize, pageNumber, orderBy, sort, search);
+            return users;
+        }
+
+        [HttpGet("get/{id}")]
+        public Task<UserViewModel> GetUserById(string id)
+        {
+            return _userService.GetUserById(id);
+        }
+
+        [HttpPut("update")]
+        public Task<IdentityResult> UpdateUser([FromBody]UserViewModel model)
+        {
+            return _userService.UpdateUser(model);
+        }
+
+        [HttpDelete("delete/{id}")]
+        public Task<IdentityResult> DeleteUser(string id)
+        {
+            return _userService.DeleteUser(id);
+        }
+
+        [HttpGet("roles")]
+        public IEnumerable<string> GetAllRoles()
+        {
+            return _userService.GetAllRoles();
         }
     }
 }

@@ -59,7 +59,7 @@ namespace WeddingDress.ASPCore.WebAPI.API.Controllers
         }
 
         [HttpGet("getsort")]
-        public LeftNavReturnViewModel GetLeftNavsWithPagingAndSorting(int pageSize, int pageNumber, string orderBy, bool sort, string search)
+        public DataReturnViewModel GetLeftNavsWithPagingAndSorting(int pageSize, int pageNumber, string orderBy, bool sort, string search)
         {
             var leftNavs = _leftNavService.GetLeftNavsWithPagingAndSorting(pageSize, pageNumber, orderBy, sort, search);
             return leftNavs;

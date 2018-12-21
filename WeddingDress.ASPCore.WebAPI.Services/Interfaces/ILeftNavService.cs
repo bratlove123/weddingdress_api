@@ -14,6 +14,6 @@ namespace WeddingDress.ASPCore.WebAPI.Services.Interfaces
         void DeleteLeftNav(int id);
         void EditLeftNav(LeftNavViewModel leftNav);
         Task<LeftNav> GetLeftNav(int id);
-        LeftNavReturnViewModel GetLeftNavsWithPagingAndSorting(int pageSize, int pageNumber, string orderBy, bool sort, string search);
+        DataReturnViewModel GetLeftNavsWithPagingAndSorting(int pageSize, int pageNumber, string orderBy, bool sort, string search);
     }
 }

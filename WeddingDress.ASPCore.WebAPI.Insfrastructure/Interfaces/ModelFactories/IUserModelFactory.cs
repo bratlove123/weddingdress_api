@@ -9,5 +9,6 @@ namespace WeddingDress.ASPCore.WebAPI.Insfrastructure.Interfaces.ModelFactories
     public interface IUserModelFactory
     {
         ApplicationUser CreateApplicationUser(UserViewModel model);
+        UserViewModel CreateUser(ApplicationUser user);
     }
 }

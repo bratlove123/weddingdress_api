@@ -12,6 +12,7 @@ namespace WeddingDress.ASPCore.WebAPI.Insfrastructure.Profiles
         public UserMappingProfile()
         {
             CreateMap<UserViewModel, ApplicationUser>().ReverseMap();
+            CreateMap<ApplicationUser, UserViewModel>().ReverseMap();
         }
     }
 }

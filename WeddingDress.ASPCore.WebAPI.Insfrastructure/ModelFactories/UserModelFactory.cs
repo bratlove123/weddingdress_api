@@ -14,5 +14,10 @@ namespace WeddingDress.ASPCore.WebAPI.Insfrastructure.ModelFactories
         {
             return Mapper.Map<UserViewModel, ApplicationUser>(model);
         }
+
+        public UserViewModel CreateUser(ApplicationUser user)
+        {
+            return Mapper.Map<ApplicationUser, UserViewModel>(user);
+        }
     }
 }
